@@ -18,26 +18,20 @@ class Driver {
     }
 }
 
-public class RentARide {
+class RentARide {
     public static void main(String[] args) {
-        // Create a list of drivers
         List<Driver> drivers = new ArrayList<>();
         drivers.add(new Driver("A","Sedan", 4.0, 500));
         drivers.add(new Driver("B","Hatchback", 4.3, 1000));
         drivers.add(new Driver("C","5-Seater", 4.8, 200));
         drivers.add(new Driver("D","Sedan", 4.1, 700));
         drivers.add(new Driver("E","Hatchback", 4.7, 430));
-
-        // Customer ride details
-        //double rideDistance = 43; // in km
-        //String requestedCar = "Sedan";
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter the car model: ");
         String carModel1 = scanner.nextLine();
         System.out.println("Enter the ditance: ");
         double rideDistance = scanner.nextDouble();
 
-        // Filter drivers based on conditions
         List<Driver> eligibleDrivers = new ArrayList<>();
         for (Driver driver : drivers) {
             if (driver.rating >= 4 && driver.carModel.equals(carModel1)) {
@@ -45,7 +39,6 @@ public class RentARide {
             }
         }
 
-        // Find the closest eligible driver
         Driver closestDriver = null;
         double minDistance = Double.MAX_VALUE;
         for (Driver driver : eligibleDrivers) {
@@ -55,11 +48,9 @@ public class RentARide {
             }
         }
 
-        // If no eligible drivers found, prompt customer to select another car
         if (closestDriver == null) {
             System.out.println("No drivers available for the requested car. Please select another car.");
         } else {
-            // Calculate the total charge
             double totalCharge = rideDistance * 8;
 
             System.out.println("Driver " + closestDriver.Drivername + " will get you to the destination.");
